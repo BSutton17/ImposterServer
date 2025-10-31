@@ -140,12 +140,13 @@ io.on("connection", (socket) => {
       // Remove from imposters list if present
       if (roomImposters[room]) {
         roomImposters[room] = roomImposters[room].filter(name => name !== votedOut);
+        console.log("Imposter count: " + roomImposters[room].length);
         // If all imposters are gone, imposters lose
         if (roomImposters[room].length === 0) {
           io.to(room).emit("imposters_lose");
         }
         // Imposters win if their count is at least half of the remaining players (rounded down)
-        else if (roomImposters[room].length >= (rooms[room].players.length / 2) - roomImposters[room].length ) {
+        else if (roomImposters[room].length >= (rooms[room].players.length - roomImposters[room].length )) {
           io.to(room).emit("imposters_win");
         }
       }
