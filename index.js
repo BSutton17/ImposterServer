@@ -13,7 +13,7 @@ const server = http.createServer(app);
 //https://majority1.netlify.app
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'http://localhost:5173',  
+    origin: 'https://impostergame1.netlify.app',  
     methods: ['GET', 'POST']
   }
 });
