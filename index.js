@@ -145,7 +145,7 @@ io.on("connection", (socket) => {
           io.to(room).emit("imposters_lose");
         }
         // Imposters win if their count is at least half of the remaining players (rounded down)
-        else if (roomImposters[room].length >= Math.floor(rooms[room].players.length / 2)) {
+        else if (roomImposters[room].length >= (rooms[room].players.length / 2) - roomImposters[room].length ) {
           io.to(room).emit("imposters_win");
         }
       }
